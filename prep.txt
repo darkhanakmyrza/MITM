@@ -1,0 +1,13 @@
+Preparing the environment
+
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py # Download the PIP installer for Python 2.7
+python2 get-pip.py # Start downloading the PIP itself
+cd ~/.local/bin # Go to the directory where PIP was downloaded
+./pip2 install --upgrade setuptools # Update the setuptools module to correctly install other modules
+./pip2 install scapy wsgiref # Installing the necessary modules to work with net-creds
+sudo mkdir /usr/lib/python2.7/dist-packages/scapy # Since the scipy module was installed in the user's home directory, and not in the system, we create a directory (sudo pip2 would not work, so we do this!)
+cd /usr/lib/python3/dist-packages # Go to the directory with Python 3 modules (yes, yes, exactly 3)
+sudo cp -avr scapy/* /usr/lib/python2.7/dist-packages/scapy # Copy the entire module to the directory you created
+cd ~/ # Back to the home directory
+sudo apt update && sudo apt install bettercap # update the repositories and install Bettercap
+git clone https://github.com/DanMcInerney/net-creds.git # Cloning the repository net-creds
